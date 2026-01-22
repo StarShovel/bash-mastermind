@@ -78,12 +78,12 @@ At the beginning of the game, the player will be presented with an empty board, 
 
 Pegs are entered by pressing keys corresponding to the required colour:
 
-**R**: Red
-**B**: Blue
-**G**: Green
-**Y**: Yellow
-**W**: White
-**N**: Black (or "Noir")
+- **R**: Red
+- **B**: Blue
+- **G**: Green
+- **Y**: Yellow
+- **W**: White
+- **N**: Black (or "Noir")
 
 It's unfortunate that Blue and Black share the same initial letter. I can only think that whoever designed the game in 1971 didn't have the foresight to consider that a keyboard-driven computer version might be possible.
 
@@ -99,8 +99,8 @@ Codes are entered starting at the bottom row (nearest to the code breaker in the
 
 In deluxe mode, as indicated above, two more colours are available. These are:
 
-**O**: Orange
-**P**: Purple
+- **O**: Orange
+- **P**: Purple
 
 In the original game these were orange and brown, but although an emoji character does exist for a brown circle, in practice it looks a bit too similar to the orange character. A screenshot is shown below.
 
