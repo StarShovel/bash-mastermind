@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Version 1.0 - January 2026
+# Version 1.1 - January 2026. Incoporates a "minimal mode"
 # Requires Bash >= 4.3
 
 peg() {
@@ -62,8 +62,7 @@ makesecret() {
 }
 
 respond() {
- local guess=$1
- local lsecret=$2
+ local guess=$1 lsecret=$2
  local chop
  local -i pos i
  local resp=
@@ -95,8 +94,9 @@ respond() {
 }
 
 cleanup () {
-
-# display the result
+ # display the result
+ local -i i
+ local ch
  tput cup 2 2
  for ((i=0; i<npegs; i++)); do
     ch=${secret:i:1}
@@ -107,31 +107,28 @@ cleanup () {
  printf $'\e[?25h'
  tput cup $(($LINES - 1)) 0
  exit $1
-
 }
 
 #### MAIN #####
 
 trap 'cleanup 130' INT
 
-declare -i DELUXE=0 ngoes npegs ncols
-while getopts ":d" opt; do
-   [[ $opt = d ]] && ((DELUXE=1))
+declare -i ngoes npegs ncols gtype=1
+
+while getopts ":dm" opt; do
+   [[ $opt = d ]] && gtype=2
+   [[ $opt = m ]] && gtype=0
 done
 
-if (( DELUXE )); then
-   (( ngoes=12, npegs=5, ncols=8 ))
-else
-   (( ngoes=10, npegs=4, ncols=6 ))
-fi
+(( ngoes=8+2*gtype, npegs=3+gtype, ncols=4+2*gtype ))
 
-declare allcolours=(R G Y N W B O P)
+declare allcolours=(R G Y B N W O P)
 declare copts=( "${allcolours[@]:0:ncols}" )
 
 curoff=$'\e[?25l'   # hide cursor
 
 declare secret
-declare -A pegs=( [R]=🔴 [G]=🟢 [Y]=🟡 [N]=⚫ [W]=⚪ [B]=🔵 [O]=🟠 [P]=🟣 )
+declare -A pegs=( [R]=🔴 [G]=🟢 [Y]=🟡 [B]=🔵 [N]=⚫ [W]=⚪ [O]=🟠 [P]=🟣 )
 
 makesecret secret
 tput clear

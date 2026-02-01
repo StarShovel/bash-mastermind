@@ -18,7 +18,7 @@ This is a simple Bash implementation of the old code-breaking game *Mastermind*,
 
 ##  Features
 
-- Classic and deluxe game modes
+- Classic, deluxe and minimal game modes
 - Unicode/emoji terminal UI
 - Keyboard-driven input with backspace support
 - Clean exit and secret reveal on quit
@@ -29,7 +29,7 @@ The original game involved two players. One player would set a "code" or "secret
 
 One black "feedback" peg would be placed for each "entry" peg matching a peg of the same colour in the same position in the secret. One white feedback peg would be placed for each entry peg matching a peg of the same colour in a different position. Six colours were available, and the code could be composed of any combination - so that there are 1,296 possible different codes.
 
-A "deluxe" version was also available, in which the code breaker has a maximum of 12 goes. The code consists of five pegs, composed of eight possible colours. 
+A "deluxe" version was also available, in which the code breaker has a maximum of 12 goes. The code consists of five pegs, composed of eight possible colours. The program supports this version of a game, and also a "minimal" mode in which the code is composed of three pegs drawn from four possible colours.
 
 The idea is for the "code breaker" player to use the clues to work out the secret. If unfamiliar with the rules, please use the Wikipedia entry for the game to scrutinise them more carefully.
 
@@ -65,6 +65,10 @@ Run the game from the command line:
 Or for "deluxe mode":
 
 ```./bash-mastermind.sh -d```
+
+Or for "minimal mode":
+
+```./bash-mastermind.sh -m```
 
 It's intended to run on a terminal with a dark background.
 
@@ -104,8 +108,24 @@ In deluxe mode, as indicated above, two more colours are available. These are:
 
 In the original game these were orange and brown, but although an emoji character does exist for a brown circle, in practice it looks a bit too similar to the orange character. A screenshot is shown below.
 
+The player has twelve goes to guess a five-peg code.
+
 ![rmm04](./rmm04.png)
 
+
+
+### Minimal Mode
+
+In minimal mode only four colours are available, these are:
+
+- **R**: Red
+- **B**: Blue
+- **G**: Green
+- **Y**: Yellow
+
+The player has eight goes to guess a three-peg code.
+
+![rmm05](./rmm05.png)
 
 
 ## Game Conclusion
